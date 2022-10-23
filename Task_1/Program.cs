@@ -3,14 +3,14 @@
 // 12821 -> да
 // 23432 -> да
 
-string Promt(string message)
+int Promt(string message)
 {
     Console.Write(message);
-    string number = Console.ReadLine();
+    int number = Convert.ToInt32(Console.ReadLine());
     return number;
 }
-string number = Promt("Введите целое положительное число: ");
-int length = number.Length;
+int number = Promt("Введите целое положительное число: ");
+int length = (int)Math.Log10(number) + 1;
 int num = Convert.ToInt32(number);
 int temp = num;
 int sum = 0;
