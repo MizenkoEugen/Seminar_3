@@ -3,47 +3,28 @@
 // 12821 -> да
 // 23432 -> да
 
-int Promt(string message)
+string Promt(string message)
 {
-    System.Console.Write(message);
-    int number = Convert.ToInt32(Console.ReadLine());
+    Console.Write(message);
+    string number = Console.ReadLine();
     return number;
 }
-
-bool ValidateNumber(int number)
+string number = Promt("Введите целое положительное число: ");
+int length = number.Length;
+int num = Convert.ToInt32(number);
+int temp = num;
+int sum = 0;
+for (int i = 1; i <= length; i++)
 {
-    if (number < 10000 || number >= 100000)
-    {
-        System.Console.WriteLine($"Число {number} не пятизначное");
-        return false;
-    }
-    return true;
+    int ost = temp % 10;
+    temp = temp / 10;
+    sum = sum * 10 + ost;
 }
-
-int number = Promt("Введите пятизначное число: ");
-
-bool ValidatePal(int a, int b)
+if (num == sum)
 {
-    if (a != b)
-    {
-        System.Console.WriteLine($"Число {number} не является палиндромом");
-        return false;
-    }
-    return true;
+    System.Console.WriteLine($"Число {num} является палиндромом");
 }
-
-if (ValidateNumber(number))
+else
 {
-    int a = number / 10000;
-    int b = number % 10;
-    if (ValidatePal(a, b))
-    {
-        a = number / 1000 % 10;
-        b = number / 10 % 10;
-        if (ValidatePal(a, b))
-        {
-            System.Console.WriteLine($"Число {number} является палиндромом");
-        }
-
-    }
+    System.Console.WriteLine($"Число {num} не является палиндромом");
 }
